@@ -1,4 +1,4 @@
-import './loading.css';
+import './index.css';
 
 const doc = window.document;
 const $body = doc.body || doc.head;
@@ -11,26 +11,18 @@ $loading.innerHTML = `<div class="logo">
                       </div>`;
 
 const Loading = {
-  show({delay = 0}) {
-    try {
-      if(!delay) {
-        setTimeout(() => {
-          $body.appendChild($loading);
-        }, delay);
-      } else {
-        $body.appendChild($loading);
-      }
-    } catch (e) {
+    show() {
+        try {
+            $body.appendChild($loading);
+        } catch (e) {}
+    },
+    hide() {
+        try {
+            if ($loading.parentNode === $body) {
+                $body.removeChild($loading);
+            }
+        } catch (e) {}
     }
-  },
-  hide() {
-    try {
-      if ($loading.parentNode === $body) {
-        $body.removeChild($loading);
-      }
-    } catch (e) {
-    }
-  }
 };
 
 export default Loading;

@@ -1,17 +1,13 @@
 <template>
   <div class="webview">
     <transition :name="transitionName">
-      <!-- <keep-alive include="Chat"> -->
-          <router-view class="child-view"></router-view>
-      <!-- </keep-alive> -->
-      <!-- <router-view class="child-view"></router-view> -->
+      <router-view class="child-view"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'BaseTransition',
     data () {
       return {
         transitionName: 'slide-left'
@@ -36,7 +32,7 @@
     height: 100%;
     background: #fff;
     overflow: hidden;
-    box-shadow: 0 0 15px 0px #dbdada;
+    box-shadow: 0 0 15px 0px #d0cece;
   }
   .child-view {
     position: absolute;
@@ -44,27 +40,22 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    will-change: transform;
-    transition: transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all .4s cubic-bezier(.55,0,.1,1);
   }
   .slide-left-enter{
-    opacity: 0;
-    -webkit-transform: translate(70%, 0);
-    transform: translate(70%, 0);
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
   }
   .slide-left-leave-active {
-    opacity: 0;
-    -webkit-transform: translate(-70%, 0);
-    transform: translate(-70%, 0);
+    -webkit-transform: translate(-100px, 0);
+    transform: translate(-100px, 0);
   }
   .slide-right-enter {
-    opacity: 0;
-    -webkit-transform: translate(-70%, 0);
-    transform: translate(-70%, 0);
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
   }
   .slide-right-leave-active {
-    opacity: 0;
-    -webkit-transform: translate(70%, 0);
-    transform: translate(70%, 0);
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
   }
 </style>

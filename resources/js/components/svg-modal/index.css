@@ -1,4 +1,12 @@
-#my-svg {
-    width: 120px;
+.svg {
+    position: absolute;
+    width: 200px;
+    top: 56px;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.svg #my-svg {
+    width: 200px;
     height: 50px;
 }

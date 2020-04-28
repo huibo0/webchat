@@ -1,135 +1,76 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from '../view/Loan.vue';
-import Robot from '../view/Robot';
-import Home from '../view/Home';
-import Register from '../view/Signin/Register';
-import Login from '../view/Signin/Login';
-import Chat from '../view/Chat';
-import Avatar from '../view/Avatar';
-import GroupDetail from '../view/GroupDetail';
-import PersonDetail from '../view/PersonDetail';
-import GroupMember from '../view/GroupMember';
-import Search from '../view/Search';
-import SearchResult from '../view/SearchResult';
+import Index from '../pages/Loan';
+import Chat from '../pages/Chat';
+import Robot from '../pages/Robot';
+import Home from '../pages/Home';
+import Avatar from '../pages/Avatar';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 import BaseTransition from '../layout/BaseTransition';
-import TopTransition from '../TopTransition';
-import BaseView from '../BaseView';
-import loading from '../components/loading/loading';
+import loading from '../components/loading';
 
+// 通过 Vue Router 定义前端路由
 Router.prototype.goBack = function () {
-  this.isBack = true;
-  window.history.go(-1);
+    this.isBack = true;
+    window.history.go(-1);
 };
 Vue.use(Router);
 
 const router = new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'BaseTransition',
-      component: BaseTransition,
-      children: [
+    routes: [
         {
-          path: '',
-          name: 'index',
-          component: Index,
+            path: '/',
+            name: 'BaseTransition',
+            component: BaseTransition,
+            children: [
+                {
+                    path: '',
+                    name: 'index',
+                    component: Index
+                },
+                {
+                    path: '/chat',
+                    name: 'chat',
+                    component: Chat
+                },
+                {
+                    path: '/robot',
+                    name: 'Robot',
+                    component: Robot
+                }
+            ]
         },
         {
-          path: '/chat',
-          name: 'chat',
-          component: Chat
+            path: '/home',
+            name: 'Home',
+            component: Home
         },
         {
-          path: '/robot',
-          name: 'Robot',
-          component: Robot
+            path: '/avatar',
+            name: 'avatar',
+            component: Avatar
         },
         {
-          path: '/groupDetail',
-          name: 'GroupDetail',
-          component: GroupDetail
+            path: '/register',
+            name: 'Register',
+            component: Register
         },
         {
-          path: '/groupMember',
-          name: 'GroupMember',
-          component: GroupMember
-        },
-        {
-          path: '/persionDetail',
-          name: 'PersonDetail',
-          component: PersonDetail
+            path: '/login',
+            name: 'Login',
+            component: Login
         }
-      ]
-    },
-    {
-      path: '/home',
-      name: 'HomeBaseTransition',
-      component: BaseView,
-      children: [
-        {
-          path: '',
-          name: 'Home',
-          component: BaseTransition,
-          children: [
-            {
-              path: '/avatar',
-              name: 'avatar',
-              component: Avatar
-            },
-            {
-              path: '',
-              name: 'Home',
-              component: Home,
-            },
-          ]
-        },
-      ]
-    },
-    {
-      path: '/search',
-      name: 'SearchBase',
-      component: BaseView,
-      children: [
-        {
-          path: '',
-          name: 'Seach',
-          component: TopTransition,
-          children: [
-            {
-              path: '',
-              name: 'Search',
-              component: Search,
-            },
-            {
-              path: '/searchResult',
-              name: 'SearchResult',
-              component: SearchResult,
-            }
-          ]
-        }
-      ]
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    }
-  ]
+    ]
 });
 
 router.beforeEach((to, from, next) => {
-  loading.show();
-  next();
+    loading.show();
+    next();
 });
 
 router.afterEach(route => {
-  loading.hide();
+    loading.hide();
 });
 
 export default router;

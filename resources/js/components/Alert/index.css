@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .wind-alert-dialog {
     /* top: 30%; */
     width: 80%;
@@ -56,9 +57,10 @@
 }
 
 @keyframes scale {
-    0%{
+    0% {
         transform: scale(0);
     }
+
     100% {
         transform: scale(1);
     }

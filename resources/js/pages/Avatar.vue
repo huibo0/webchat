@@ -1,14 +1,7 @@
 <template>
-  <div>
-    <Header
-      leftIcon="chevron_left"
-      rightIcon=""
-      content="修改头像"
-      color=""
-      @leftClick="goback"
-      ></Header>
-    <div class="wrapper">
-      <vue-cropper
+  <div class="wrapper">
+    <Header></Header>
+    <vue-cropper
       ref="cropper"
       :fixed="option.fixed"
       :img="option.img"
@@ -18,7 +11,6 @@
       :canMoveBox="option.canMoveBox"
       :autoCrop="option.autoCrop">
     </vue-cropper>
-    </div>
     <div class="tools">
       <label class="btn" for="uploads">上传头像</label>
       <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/gif, image/jpg"
@@ -31,13 +23,13 @@
 <script>
   import {mapState} from 'vuex';
   import {VueCropper} from 'vue-cropper';
-  import { getItem } from '@utils/localStorage';
-  import Alert from '@components/Alert';
-  import Header from '@components/Header';
-  import Confirm from '@components/Confirm';
-  import loading from '@components/loading/loading';
+  import {getItem} from '../utils/localStorage';
+  import Alert from '../components/Alert';
+  import Header from '../components/Header';
+  import Confirm from '../components/Confirm';
+  import loading from '../components/loading';
   export default {
-    name: 'Avatar',
+
     components: {
       VueCropper: VueCropper,
       Header: Header
@@ -59,20 +51,17 @@
     mounted() {},
 
     methods: {
-      goback() {
-        this.$router.isBack = true;
-        this.$router.goBack();
-      },
       postAvatar() {
         loading.show();
         this.$refs.cropper.getCropBlob(async (data) => {
           let files = new window.File([data], this.name, {type: this.type});
           const formdata = new window.FormData();
           formdata.append('file', files);
-          formdata.append('username', getItem('userid'));
+          formdata.append('api_token', this.auth_token);
           const res = await this.$store.dispatch('uploadAvatar', formdata);
           loading.hide();
           if (res.errno === 0) {
+            console.log(res.data.url);
             this.$store.commit('setUserInfo', {
               type: 'src',
               value: res.data.url
@@ -137,7 +126,8 @@
     computed: {
       ...mapState({
         userid: state => state.userInfo.userid,
-        src: state => state.userInfo.src
+        src: state => state.userInfo.src,
+        auth_token: state => state.userInfo.token
       })
     }
   };
@@ -146,7 +136,6 @@
   .wrapper {
     width: 375px;
     height: 375px;
-    overflow: auto
   }
   .btn {
     display: inline-block;
