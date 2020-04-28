@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import Header from "@components/Header";
-import Avatar from "@components/Avatar";
-import {queryString} from '@utils/queryString';
+import Header from "./components/Header";
+import Avatar from "./components/Avatar";
+import {queryString} from './utils/queryString';
 import {mapGetters, mapState} from 'vuex';
 export default {
   name: 'GroupMember',

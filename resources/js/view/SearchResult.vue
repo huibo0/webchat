@@ -20,7 +20,7 @@
 
 <script>
 import { mapState } from "vuex";
-import SearchBar from "@components/searchBar";
+import SearchBar from "./components/searchBar";
 import debounce from 'lodash/debounce';
 
 export default {

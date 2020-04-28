@@ -85,13 +85,13 @@
 </template>
 
 <script>
-import Confirm from "@components/Confirm";
-import Bottom from "@components/Bottom";
-import Avatar from "@components/Avatar";
+import Confirm from "./components/Confirm";
+import Bottom from "./components/Bottom";
+import Avatar from "./components/Avatar";
 import { mapState } from "vuex";
 import env from '@utils/env';
-import { sort } from '@utils/tools';
-import { ROBOT_URL, HOST_URL1, HOST_URL2 } from "@const/index";
+import { sort } from './utils/tools';
+import { ROBOT_URL, HOST_URL1, HOST_URL2 } from "./const/index";
 import socket from "../socket";
 
 export default {

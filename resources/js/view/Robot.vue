@@ -40,10 +40,10 @@
 
 <script type="text/ecmascript-6">
 import { mapGetters, mapState } from "vuex";
-import Alert from '@components/Alert';
-import Message from "@components/Message";
-import InputSumbit from "@components/input-sumbit";
-import { HOSTER_URL, HOSTER_NAME } from "@const/index";
+import Alert from './components/Alert';
+import Message from "./components/Message";
+import InputSumbit from "./components/input-sumbit";
+import { HOSTER_URL, HOSTER_NAME } from "./const/index";
 
 export default {
   name: 'Robot',

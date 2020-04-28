@@ -118,16 +118,16 @@
   import {mapGetters, mapState} from 'vuex';
   import {inHTMLData} from 'xss-filters-es6';
   import socket from '../socket';
-  import emoji from '@utils/emoji';
+  import emoji from './utils/emoji';
   import {setItem, getItem} from '@utils/localStorage';
-  import {queryString} from '@utils/queryString';
-  import Message from '@components/Message';
-  import loading from '@components/loading/loading';
-  import Alert from '@components/Alert';
+  import {queryString} from './utils/queryString';
+  import Message from './components/Message';
+  import loading from './components/loading/loading';
+  import Alert from './components/Alert';
   import debounce from 'lodash/debounce';
-  import url from '@api/server';
+  import url from './api/server';
   import { setTimeout } from 'timers';
-  import ios from '@utils/ios';
+  import ios from './utils/ios';
   import { v4 as uuid } from 'uuid';
 
   let isMore = false;

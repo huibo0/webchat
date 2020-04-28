@@ -52,11 +52,11 @@
 
 <script>
 import { mapState } from "vuex";
-import { clear, removeItem } from "@utils/localStorage";
-import Confirm from "@components/Confirm";
-import Alert from "@components/Alert";
-import Bottom from "@components/Bottom";
-import UserHead from "@components/userHead";
+import { clear, removeItem } from "./utils/localStorage";
+import Confirm from "./components/Confirm";
+import Alert from "./components/Alert";
+import Bottom from "./components/Bottom";
+import UserHead from "./components/userHead";
 import socket from "../socket";
 import loginMixin from '../mixin/login';
 

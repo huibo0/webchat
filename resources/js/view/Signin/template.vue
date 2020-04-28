@@ -32,13 +32,13 @@
 </template>
 
 <script type="text/ecmascript-6">
-import SvgModal from "@components/svg-modal/index.vue";
-import Alert from "@components/Alert";
-import Toast from "@components/Toast";
+import SvgModal from "./components/svg-modal/index.vue";
+import Alert from "./components/Alert";
+import Toast from "./components/Toast";
 import socket from "../../socket";
-import ios from '@utils/ios';
-import Arrow from '@components/arrow';
-import Input from '@components/input';
+import ios from './utils/ios';
+import Arrow from './components/arrow';
+import Input from './components/input';
 import { handleInit } from '../../socket-handle';
 
 export default {

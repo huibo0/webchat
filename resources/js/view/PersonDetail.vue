@@ -54,13 +54,13 @@
 </template>
 
 <script>
-import Header from "@components/Header";
-import Avatar from "@components/Avatar";
-import UserHead from "@components/userHead";
-import Gender from "@components/Gender";
-import {queryString} from '@utils/queryString';
+import Header from "./components/Header";
+import Avatar from "./components/Avatar";
+import UserHead from "./components/userHead";
+import Gender from "./components/Gender";
+import {queryString} from './utils/queryString';
 import {mapGetters, mapState} from 'vuex';
-import Alert from '@components/Alert';
+import Alert from './components/Alert';
 export default {
   name: 'PersonDetail',
 

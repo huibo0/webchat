@@ -30,9 +30,9 @@ import { mapState } from "vuex";
 import { clear, removeItem } from "@utils/localStorage";
 import Confirm from "@components/Confirm";
 import Alert from "@components/Alert";
-import Bottom from "@components/Bottom";
-import UserHead from "@components/userHead";
-import SearchBar from "@components/searchBar";
+import Bottom from "./components/Bottom";
+import UserHead from "./components/userHead";
+import SearchBar from "./components/searchBar";
 const randomColor = require('randomcolor');
 import { sort } from '@utils/tools';
 

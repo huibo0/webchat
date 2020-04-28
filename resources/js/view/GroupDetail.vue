@@ -75,10 +75,10 @@
 </template>
 
 <script>
-import Header from "@components/Header";
-import Avatar from "@components/Avatar";
+import Header from "./components/Header";
+import Avatar from "./components/Avatar";
 import {mapGetters, mapState} from 'vuex';
-import {queryString} from '@utils/queryString';
+import {queryString} from './utils/queryString';
 export default {
   name: 'GroupDetail',
 
