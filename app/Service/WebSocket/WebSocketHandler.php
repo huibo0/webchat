@@ -6,6 +6,7 @@
 
 namespace App\Service\WebSocket;
 
+use App\Service\WebSocket\SocketIO\Packet;
 use App\Service\WebSocket\SocketIO\SocketIOParser;
 use Hhxsv5\LaravelS\Swoole\WebSocketHandlerInterface;
 use Illuminate\Support\Facades\Log;
