@@ -12,7 +12,7 @@ import PersonDetail from '../view/PersonDetail';
 import GroupMember from '../view/GroupMember';
 import Search from '../view/Search';
 import SearchResult from '../view/SearchResult';
-import BaseTransition from '../../layout/BaseTransition';
+import BaseTransition from '../layout/BaseTransition';
 import TopTransition from '../TopTransition';
 import BaseView from '../BaseView';
 import loading from '../components/loading/loading';
