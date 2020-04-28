@@ -21,7 +21,7 @@ return [
     'event_handlers'           => [],
     'websocket'                => [
         'enable' => true,
-        'handler' => \App\Service\WebSocketHandler::class,
+        'handler' => \App\Service\WebSocket\WebSocketHandler::class,
     ],
     'sockets'                  => [],
     'processes'                => [
@@ -78,6 +78,8 @@ return [
         'enable_reuse_port'  => true,
         'enable_coroutine'   => false,
         'http_compression'   => false,
+        'heartbeat_idle_time' => 600,
+        'heartbeat_check_interval' => 60,
 
         // Slow log
         // 'request_slowlog_timeout' => 2,
