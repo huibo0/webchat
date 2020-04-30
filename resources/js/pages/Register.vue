@@ -54,7 +54,7 @@ export default {
           });
           this.$store.commit("setUserInfo", {
             type: "userid",
-            value: res.data.user.email
+            value: res.data.user.name
           });
           this.$store.commit("setUserInfo", {
             type: "token",
