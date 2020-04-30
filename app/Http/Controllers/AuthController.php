@@ -29,7 +29,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return [
                 'errno' => 1,
-                'data' => $validator->errors()->first()
+                'message' => $validator->errors()->first()
             ];
         }
 
@@ -46,18 +46,19 @@ class AuthController extends Controller
             if ($user) {
                 return [
                     'errno' => 0,
-                    'data' => $user
+                    'user' => $user,
+                    'message' => '用户注册成功'
                 ];
             } else {
                 return [
                     'errno' => 1,
-                    'data' => '保存用户到数据库失败'
+                    'message' => '保存用户到数据库失败'
                 ];
             }
         } catch (QueryException $exception) {
             return [
                 'errno' => 1,
-                'data' => '保存用户到数据库异常：' . $exception->getMessage()
+                'message' => '保存用户到数据库异常：' . $exception->getMessage()
             ];
         }
     }
@@ -65,30 +66,53 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         // 验证登录字段
-        $request->validate([
-            'email' => 'required|string',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|email|string',
             'password' => 'required|string',
         ]);
+        if ($validator->fails()) {
+            return [
+                'errno' => 1,
+                'message' => $validator->errors()->first()
+            ];
+        }
 
-        $email = $request->input('email');
+        $email = $request->input('name');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();
         // 用户校验成功则返回 Token 信息
         if ($user && Hash::check($password, $user->password)) {
             $user->api_token = Str::random(60);
             $user->save();
-            return response()->json(['user' => $user, 'success' => true]);
+            return [
+                'errno' => 0,
+                'user' => $user,
+                'message' => '用户登录成功'
+            ];
         }
 
-        return  response()->json(['success' => false]);
+        return [
+            'errno' => 1,
+            'message' => '用户名和密码不匹配，请重新输入'
+        ];
     }
 
     public function logout(Request $request)
     {
         $user = Auth::guard('auth:api')->user();
+        if (!$user) {
+            return [
+                'errno' => 1,
+                'message' => '用户已退出'
+            ];
+        }
         $userModel = User::find($user->id);
         $userModel->api_token = null;
         $userModel->save();
-        return response()->json(['success' => true]);
+        return [
+            'errno' => 0,
+            'message' => '用户退出成功'
+        ];
     }
+
 }

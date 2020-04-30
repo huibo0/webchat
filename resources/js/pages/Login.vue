@@ -48,12 +48,12 @@ export default {
             background: "#2196f3"
           });
           this.$store.commit("setUserInfo", {
-              type: "userid",
-              value: res.data.user.email
+            type: "userid",
+            value: res.data.user.email
           });
           this.$store.commit("setUserInfo", {
-              type: "token",
-              value: res.data.user.api_token
+            type: "token",
+            value: res.data.user.api_token
           });
           this.$store.commit("setUserInfo", {
             type: "src",
@@ -68,7 +68,6 @@ export default {
             content: res.data.message
           });
         }
-        document.form2.reset();
       } else {
         Alert({
           content: "用户名和密码不能为空"

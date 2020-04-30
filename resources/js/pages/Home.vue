@@ -58,7 +58,6 @@ export default {
   },
   async mounted() {
     this.$store.commit("setTab", true);
-    console.log(this.userid);
     if (!this.userid) {
       const data = await Confirm({
         title: "提示",
