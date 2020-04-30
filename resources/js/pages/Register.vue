@@ -53,18 +53,18 @@ export default {
             background: "#2196f3"
           });
           console.log('开始打印')
-          console.log(res.data)
+          console.log(res.data.data)
           this.$store.commit("setUserInfo", {
             type: "userid",
-            value: res.data.email
+            value: res.data.data.email
           });
           this.$store.commit("setUserInfo", {
             type: "token",
-            value: res.data.api_token
+            value: res.data.data.api_token
           });
           this.$store.commit("setUserInfo", {
             type: "src",
-            value: res.data.avatar
+            value: res.data.data.avatar
           });
           this.getSvgModal.$root.$options.clear();
           this.$store.commit("setSvgModal", null);
