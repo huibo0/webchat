@@ -53,7 +53,7 @@ export default {
             background: "#2196f3"
           });
           console.log('开始打印')
-          console.log(res.data.email)
+          console.log(res.data)
           this.$store.commit("setUserInfo", {
             type: "userid",
             value: res.data.email
