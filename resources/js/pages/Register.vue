@@ -52,17 +52,18 @@ export default {
             timeout: 1000,
             background: "#2196f3"
           });
+          console.log(res)
           this.$store.commit("setUserInfo", {
             type: "userid",
-            value: res.data.user.email
+            value: res.data.email
           });
           this.$store.commit("setUserInfo", {
             type: "token",
-            value: res.data.user.api_token
+            value: res.data.api_token
           });
           this.$store.commit("setUserInfo", {
             type: "src",
-            value: res.data.user.avatar
+            value: res.data.avatar
           });
           this.getSvgModal.$root.$options.clear();
           this.$store.commit("setSvgModal", null);
@@ -91,7 +92,6 @@ export default {
       const svg = SvgModal();
       this.$store.commit("setSvgModal", svg);
     }
-    console.log(this)
   },
   computed: {
     ...mapState(["svgmodal"]),
