@@ -38,7 +38,7 @@ class AuthController extends Controller
         try {
             $user = User::create([
                 'name' => substr($email, 0, strpos($email, '@')),
-//                'email' => $email,
+                'email' => $email,
                 'avatar' => $request->input('src'),
                 'password' => Hash::make($request->input('password')),
                 'api_token' => Str::random(60)
