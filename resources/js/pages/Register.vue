@@ -52,7 +52,7 @@ export default {
             timeout: 1000,
             background: "#2196f3"
           });
-          console.log(res)
+          console.log(res.data.email)
           this.$store.commit("setUserInfo", {
             type: "userid",
             value: res.data.email
