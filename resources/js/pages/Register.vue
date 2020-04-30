@@ -54,7 +54,7 @@ export default {
           });
           this.$store.commit("setUserInfo", {
             type: "userid",
-            value: res.data.user.name
+            value: res.data.user.email
           });
           this.$store.commit("setUserInfo", {
             type: "token",
@@ -91,6 +91,7 @@ export default {
       const svg = SvgModal();
       this.$store.commit("setSvgModal", svg);
     }
+    console.log(this)
   },
   computed: {
     ...mapState(["svgmodal"]),
