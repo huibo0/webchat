@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -20,19 +21,45 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         // 验证注册字段
-        Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6']
-        ])->validate();
-
-        // 在数据库中创建用户并返回包含 api_token 字段的用户数据
-        return User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'api_token' => Str::random(60)
+        $validator = Validator::make($request->all(), [
+            'name' => 'bail|required|email|max:100|unique:users',
+            'password' => 'bail|required|string|min:6',
+            'src' => 'bail|active_url|max:255'
         ]);
+        if ($validator->fails()) {
+            return [
+                'errno' => 1,
+                'data' => $validator->errors()->first()
+            ];
+        }
+
+        // 在数据库中创建用户并返回
+        $email = $request->input('name');
+        try {
+            $user = User::create([
+                'name' => substr($email, 0, strpos($email, '@')),
+                'email' => $email,
+                'avatar' => $request->input('src'),
+                'password' => Hash::make($request->input('password')),
+                'api_token' => Str::random(60)
+            ]);
+            if ($user) {
+                return [
+                    'errno' => 0,
+                    'data' => $user
+                ];
+            } else {
+                return [
+                    'errno' => 1,
+                    'data' => '保存用户到数据库失败'
+                ];
+            }
+        } catch (QueryException $exception) {
+            return [
+                'errno' => 1,
+                'data' => '保存用户到数据库异常：' . $exception->getMessage()
+            ];
+        }
     }
 
     public function login(Request $request)
