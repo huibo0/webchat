@@ -18,10 +18,43 @@ return [
         'excluded_dirs' => [],
         'log'           => true,
     ],
-    'event_handlers'           => [],
+    'event_handlers'           => [
+        'WorkerStart' => \App\Events\WorkerStartEvent::class,
+    ],
     'websocket'                => [
         'enable' => true,
         'handler' => \App\Service\WebSocket\WebSocketHandler::class,
+        'middleware' => [
+            //\Illuminate\Auth\Middleware\Authenticate::class,
+            //\App\Http\Middleware\VerifyCsrfToken::class,
+        ],
+        'parser' => \App\Service\WebSocket\SocketIO\SocketIOParser::class,
+        'drivers' => [
+            'default' => 'table',
+            'table' => \App\Service\Websocket\Rooms\TableRoom::class,
+            'redis' => \App\Service\Websocket\Rooms\RedisRoom::class,
+            'settings' => [
+                'table' => [
+                    'room_rows' => 4096,
+                    'room_size' => 2048,
+                    'client_rows' => 8192,
+                    'client_size' => 2048,
+                ],
+                'redis' => [
+                    'server' => [
+                        'host' => env('REDIS_HOST', '127.0.0.1'),
+                        'password' => env('REDIS_PASSWORD', null),
+                        'port' => env('REDIS_PORT', 6379),
+                        'database' => 0,
+                        'persistent' => true,
+                    ],
+                    'options' => [
+                        //
+                    ],
+                    'prefix' => 'swoole:',
+                ],
+            ],
+        ],
     ],
     'sockets'                  => [],
     'processes'                => [
