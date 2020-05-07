@@ -2,7 +2,7 @@
 
 use Swoole\Http\Request;
 use App\Service\WebSocket\WebSocket;
-use App\Service\Websocket\Facades\Websocket as WebsocketProxy;
+use App\Service\WebSocket\Facades\Websocket as WebsocketProxy;
 
 /*
 |--------------------------------------------------------------------------
