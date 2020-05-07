@@ -26,7 +26,7 @@ class WorkerStartEvent implements WorkerStartInterface
             return;
         }
         // WorkerStart 事件发生时 Laravel 已经初始化完成，在这里做一些组件绑定到容器的初始化工作最合适
-        app()->singleton(Parse::class, function () {
+        app()->singleton(Parser::class, function () {
             $parserClass = config('laravels.websocket.parser');
             return new $parserClass;
         });
