@@ -6,7 +6,7 @@
  * Time: 3:14 PM
  */
 
-namespace App\Service\Websocket\Rooms;
+namespace App\Service\WebSocket\Rooms;
 
 use Swoole\Table;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Websocket\Rooms;
+namespace App\Service\WebSocket\Rooms;
 
 use Illuminate\Support\Arr;
 use Predis\Client as RedisClient;

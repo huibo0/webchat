@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Websocket\Facades;
+namespace App\Service\WebSocket\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Service\Websocket\Facades;
+namespace App\Service\WebSocket\Facades;
 
-use App\Service\Websocket\Rooms\RoomContract;
+use App\Service\WebSocket\Rooms\RoomContract;
 use Illuminate\Support\Facades\Facade;
 
 /**
