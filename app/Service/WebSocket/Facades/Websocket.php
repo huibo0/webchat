@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string getUserId()
  * @method static boolean isUserIdOnline($userId)
  *
- * @see \App\Services\WebSocket\WebSocket
+ * @see \App\Service\WebSocket\WebSocket
  */
 class Websocket extends Facade
 {
