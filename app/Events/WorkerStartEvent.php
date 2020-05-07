@@ -6,7 +6,7 @@
 namespace App\Events;
 
 use App\Service\WebSocket\Parser;
-use App\Service\Websocket\Rooms\RoomContract;
+use App\Service\WebSocket\Rooms\RoomContract;
 use App\Service\WebSocket\WebSocket;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface;
 use Illuminate\Container\Container;
